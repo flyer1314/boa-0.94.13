@@ -34,6 +34,7 @@
 #define DEFAULT_PATH     "/bin:/usr/bin:/usr/local/bin"
 
 /***** Change this via the SinglePostLimit configuration value in boa.conf *****/
+//一次POST允许最大的字节数， 默认是1MB. 
 #define SINGLE_POST_LIMIT_DEFAULT               1024 * 1024 /* 1 MB */
 
 /***** Various stuff that you may want to tweak, but probably shouldn't *****/

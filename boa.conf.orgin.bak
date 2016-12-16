@@ -22,7 +22,6 @@
 # Port: The port Boa runs on.  The default port for http servers is 80.
 # If it is less than 1024, the server must be started as root.
 
-#监听的端口号
 Port 80
 
 # Listen: the Internet address to bind(2) to.  If you leave it out,
@@ -46,7 +45,6 @@ Port 80
 #  User: The name or UID the server should run as.
 # Group: The group name or GID the server should run as.
 
-#作为某一个用户和用户组运行
 User nobody
 Group nogroup
 
@@ -61,7 +59,6 @@ Group nogroup
 # Set to /dev/null if you don't want errors logged.
 # If unset, defaults to /dev/stderr
 
-#错误日志文件
 ErrorLog /var/log/boa/error_log
 # Please NOTE: Sending the logs to a pipe ('|'), as shown below,
 #  is somewhat experimental and might fail under heavy load.
@@ -74,7 +71,6 @@ ErrorLog /var/log/boa/error_log
 # Comment out or set to /dev/null (less effective) to disable 
 # Access logging.
 
-#访问日志文件
 AccessLog /var/log/boa/access_log
 # Please NOTE: Sending the logs to a pipe ('|'), as shown below,
 #  is somewhat experimental and might fail under heavy load.
@@ -112,14 +108,11 @@ AccessLog /var/log/boa/access_log
 # DocumentRoot: The root directory of the HTML documents.
 # Comment out to disable server non user files.
 
-#HTML文档的跟目录
-#DocumentRoot /var/www
-DocumentRoot /webSvr/www
+DocumentRoot /var/www
 
 # UserDir: The name of the directory which is appended onto a user's home
 # directory if a ~user request is recieved.
 
-#指定用户目录
 UserDir public_html
 
 # DirectoryIndex: Name of the file to use as a pre-written HTML
@@ -127,8 +120,6 @@ UserDir public_html
 # fly creation of directory indexes can be _slow_.
 # Comment out to always use DirectoryMaker
 
-#指定预生成目录信息的文件， 注释此变量将使用DirectoryMaker变量。 
-#这个变量也就是设置默认 主页的文件名。
 DirectoryIndex index.html
 
 # DirectoryMaker: Name of program used to create a directory listing.
@@ -136,9 +127,7 @@ DirectoryIndex index.html
 # DirectoryIndex are commented out, accessing a directory will give
 # an error (though accessing files in the directory are still ok).
 
-#指定用于生成目录的程序， 注释此变量将不允许列目录。 
-#DirectoryMaker /usr/lib/boa/boa_indexer
-DirectoryMaker /webSvr/www/cgi-bin/boa_indexer
+DirectoryMaker /usr/lib/boa/boa_indexer
 
 # DirectoryCache: If DirectoryIndex doesn't exist, and DirectoryMaker
 # has been commented out, the the on-the-fly indexing of Boa can be used
@@ -152,12 +141,10 @@ DirectoryMaker /webSvr/www/cgi-bin/boa_indexer
 # KeepAliveMax: Number of KeepAlive requests to allow per connection
 # Comment out, or set to 0 to disable keepalive processing
 
-#每个连接允许的请求数量。 如果将此值设为" 0 "， 将不限制请求的数目。 
 KeepAliveMax 1000
 
 # KeepAliveTimeout: seconds to wait before keepalive connection times out
 
-#在关闭持久连接前等待下一个请求的秒数。 （秒） 。
 KeepAliveTimeout 10
 
 # MimeTypes: This is the file that is used to generate mime type pairs
@@ -165,18 +152,15 @@ KeepAliveTimeout 10
 # Set to /dev/null if you do not want to load a mime types file.
 # Do *not* comment out (better use AddType!)
 
-#设置包含mimetypes信息的文件， 一般是/etc/mime. types。
 MimeTypes /etc/mime.types
 
 # DefaultType: MIME type used if the file extension is unknown, or there
 # is no file extension.
 
-#默认的mimetype类型， 一般是text/html。
 DefaultType text/plain
 
 # CGIPath: The value of the $PATH environment variable given to CGI progs.
 
-#相当于给CGI程序使用的$PATH变量。
 CGIPath /bin:/usr/bin:/usr/local/bin
 
 # SinglePostLimit: The maximum allowable number of bytes in 
@@ -201,13 +185,10 @@ CGIPath /bin:/usr/bin:/usr/local/bin
 # Aliases: Aliases one path to another.
 # Example: Alias /path1/bar /path2/foo
 
-#指定路径的别名
 Alias /doc /usr/doc
 
 # ScriptAlias: Maps a virtual path to a directory for serving scripts
 # Example: ScriptAlias /htbin/ /www/htbin/
 
-#指定脚本的虚拟路径
-#ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
-ScriptAlias /cgi-bin/ /webSvr/www/cgi-bin/
+ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
 
